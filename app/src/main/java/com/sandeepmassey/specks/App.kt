@@ -1,4 +1,4 @@
-package com.sandeepmassey
+package com.sandeepmassey.specks
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
