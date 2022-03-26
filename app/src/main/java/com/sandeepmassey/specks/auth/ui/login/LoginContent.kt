@@ -44,10 +44,10 @@ fun LoginContent(
         ) {
             Image(
                 modifier = Modifier
-                    .padding(bottom = 20.dp)
-                    .size(120.dp),
-                painter = painterResource(id = R.drawable.ic_google_logo),
-                contentDescription = "Google Logo"
+                    .padding(bottom = 10.dp)
+                    .size(200.dp),
+                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                contentDescription = stringResource(id = R.string.app_logo)
             )
             Text(
                 text = stringResource(id = R.string.sign_in_title),

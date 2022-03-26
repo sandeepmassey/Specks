@@ -22,5 +22,9 @@ class Recipe(
     @SerialName("Yarn count")
     val yarnCount: String,
     @SerialName("Machine")
-    val machine: String
+    val machine: String,
+    @SerialName("Mixing")
+    val mixing: List<Mixing>,
+    @SerialName("Parameters")
+    val parameters: List<Map<String, String>>
 )

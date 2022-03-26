@@ -11,8 +11,12 @@ import com.sandeepmassey.specks.auth.data.util.NothingToUpdateException
 import com.sandeepmassey.specks.auth.dom.model.*
 import com.sandeepmassey.specks.auth.dom.repo.AuthRepository
 import com.sandeepmassey.specks.core.util.RequestState
+import com.sandeepmassey.specks.core.util.UIEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

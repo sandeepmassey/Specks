@@ -22,7 +22,23 @@ fun RecipeContent(
             .background(MaterialTheme.colors.background)
             .padding(all = SMALL_PADDING)
     ) {
-        Text(text = selectedRecipe?.machine ?: "Unknown machine")
+        selectedRecipe?.parameters?.forEach { map ->
+            map.forEach { entry ->
+                if (entry.key == "grp") {
+                    Text(
+                        modifier = Modifier
+                            .background(color = MaterialTheme.colors.secondary),
+                        text = entry.value,
+                        fontSize = MaterialTheme.typography.caption.fontSize
+                    )
+                } else {
+                    Text(
+                        text = "${entry.key} : ${entry.value}",
+                        fontSize = MaterialTheme.typography.body2.fontSize
+                    )
+                }
+            }
+        }
     }
 
 }

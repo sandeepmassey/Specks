@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">Specks</string>
-    <string name="sign_in_title">Sign in to continue</string>
-    <string name="sign_in_subtitle">sign in is required to access this app.</string>
+    <string name="sign_in_title">Sign in</string>
+    <string name="sign_in_subtitle">to continue to Specks</string>
     <string name="search_icon">Search</string>
-    <string name="network_error_icon">"Network Error "</string>
+    <string name="network_error_icon">Network Error</string>
     <string name="explore_text">Explore</string>
     <string name="profile_text">Profile</string>
     <string name="welcome_text">Welcome</string>
     <string name="close_icon">Close icon</string>
     <string name="recipe_text">Recipe</string>
+    <string name="info_icon">Info icon</string>
+    <string name="app_logo">App logo</string>
+    <string name="profile_photo_text">Profile photo</string>
 
 </resources>

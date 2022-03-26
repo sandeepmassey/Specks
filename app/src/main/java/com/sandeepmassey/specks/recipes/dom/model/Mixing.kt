@@ -8,8 +8,18 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 class Mixing(
-    @SerialName("mat")
-    val mat: String,
-    @SerialName("len")
-    val len: String,
+    @SerialName("Material")
+    val material: String,
+    @SerialName("Tint")
+    val tint: String,
+    @SerialName("Length")
+    val length: String,
+    @SerialName("Count")
+    val count: String,
+    @SerialName("Shape")
+    val shape: String,
+    @SerialName("Ratio")
+    val ratio: String,
+    @SerialName("Type")
+    val type: String
 )

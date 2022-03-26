@@ -3,6 +3,7 @@ package com.sandeepmassey.specks.recipes.ui.recipe_list
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.paging.LoadState
@@ -59,7 +60,7 @@ fun handlePagingResult(
 
         return when {
             loadState.refresh is LoadState.Loading -> {
-                //ShimmerEffect()
+                LinearProgressIndicator()
                 false
             }
             error != null -> {

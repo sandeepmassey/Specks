@@ -14,7 +14,6 @@ import com.sandeepmassey.specks.auth.dom.repo.AuthRepository
 import com.sandeepmassey.specks.core.util.RequestState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -57,6 +56,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun verifyTokenOnBackend(request: AuthApiRequest) {
+        Log.d("LoginViewModel", request.token)
         _apiResponse.value = RequestState.Loading
         try {
             viewModelScope.launch(Dispatchers.IO) {

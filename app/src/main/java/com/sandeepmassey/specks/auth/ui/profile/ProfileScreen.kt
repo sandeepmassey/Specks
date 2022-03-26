@@ -14,8 +14,8 @@ import com.sandeepmassey.specks.auth.data.util.StartActivityForResult
 import com.sandeepmassey.specks.auth.data.util.signIn
 import com.sandeepmassey.specks.auth.dom.model.AuthApiRequest
 import com.sandeepmassey.specks.auth.dom.model.AuthApiResponse
-import com.sandeepmassey.specks.navigation.Screen
 import com.sandeepmassey.specks.core.util.RequestState
+import com.sandeepmassey.specks.navigation.Screen
 import retrofit2.HttpException
 
 /**
@@ -40,7 +40,7 @@ fun ProfileScreen(
             ProfileTopBar(
                 onSave = {
                     //profileViewModel.updateUserInfo()
-                         navigateToRecipesScreen(navController = navController)
+                    navigateToRecipesScreen(navController = navController)
                 },
                 onDeleteAllConfirmed = {
                     profileViewModel.deleteUser()
