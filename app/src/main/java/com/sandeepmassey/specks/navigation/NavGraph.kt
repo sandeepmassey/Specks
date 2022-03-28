@@ -1,5 +1,6 @@
 package com.sandeepmassey.specks.navigation
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -17,6 +18,7 @@ import com.sandeepmassey.specks.recipes.ui.recipe_search.SearchScreen
 /**
  * Created by Sandeep Massey on 18-03-2022
  */
+@ExperimentalMaterialApi
 @ExperimentalCoilApi
 @Composable
 fun SetupNavGraph(navController: NavHostController) {

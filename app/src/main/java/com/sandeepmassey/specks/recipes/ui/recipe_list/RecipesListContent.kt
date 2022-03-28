@@ -3,6 +3,7 @@ package com.sandeepmassey.specks.recipes.ui.recipe_list
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -24,10 +25,14 @@ fun RecipesListContent(
 
     val result = handlePagingResult(recipes = recipes)
 
+    val listState = rememberLazyListState()
+
+
     if (result) {
         LazyColumn(
             contentPadding = PaddingValues(all = SMALL_PADDING),
-            verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
+            verticalArrangement = Arrangement.spacedBy(SMALL_PADDING),
+            state = listState
         ) {
             items(
                 items = recipes,

@@ -1,5 +1,6 @@
 package com.sandeepmassey.specks.recipes.ui.recipe_details
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -10,6 +11,7 @@ import androidx.navigation.NavHostController
 /**
  * Created by Sandeep Massey on 23-03-2022
  */
+@ExperimentalMaterialApi
 @Composable
 fun RecipeScreen(
     navController: NavHostController,

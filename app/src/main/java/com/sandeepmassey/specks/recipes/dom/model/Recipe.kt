@@ -19,10 +19,10 @@ class Recipe(
     val process: String,
     @SerialName("Section")
     val section: String,
-    @SerialName("Yarn count")
-    val yarnCount: String,
     @SerialName("Machine")
     val machine: String,
+    @SerialName("Yarn count")
+    val yarnCount: String,
     @SerialName("Mixing")
     val mixing: List<Mixing>,
     @SerialName("Parameters")

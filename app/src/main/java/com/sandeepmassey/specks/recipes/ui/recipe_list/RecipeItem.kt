@@ -8,7 +8,9 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import com.sandeepmassey.specks.R
 import com.sandeepmassey.specks.core.ui.InfoBox
 import com.sandeepmassey.specks.core.ui.UnOrderedList
 import com.sandeepmassey.specks.core.ui.theme.EXTRA_SMALL_PADDING
@@ -24,6 +26,7 @@ fun RecipeItem(
     recipe: Recipe,
     navController: NavHostController
 ) {
+
     Box(
         modifier = Modifier
             .clickable {
@@ -48,22 +51,22 @@ fun RecipeItem(
                 ) {
                     InfoBox(
                         bigText = recipe.yarnCount,
-                        smallText = "count",
+                        smallText = stringResource(id = R.string.count_text),
                         textColor = MaterialTheme.colors.onSurface
                     )
                     InfoBox(
                         bigText = recipe.process,
-                        smallText = "process",
+                        smallText = stringResource(id = R.string.process_text),
                         textColor = MaterialTheme.colors.onSurface
                     )
                     InfoBox(
                         bigText = recipe.section,
-                        smallText = "section",
+                        smallText = stringResource(id = R.string.section_text),
                         textColor = MaterialTheme.colors.onSurface
                     )
                     InfoBox(
                         bigText = recipe.machine,
-                        smallText = "machine",
+                        smallText = stringResource(id = R.string.machine_text),
                         textColor = MaterialTheme.colors.onSurface
                     )
                 }
@@ -79,7 +82,7 @@ fun RecipeItem(
                     verticalAlignment = Alignment.Top
                 ) {
                     UnOrderedList(
-                        title = "mixing",
+                        title = stringResource(id = R.string.mixing_text),
                         items = recipe.mixing,
                         textColor = MaterialTheme.colors.onSurface
                     )

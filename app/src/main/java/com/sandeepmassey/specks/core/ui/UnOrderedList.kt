@@ -27,7 +27,7 @@ fun UnOrderedList(
             color = textColor,
             fontSize = MaterialTheme.typography.overline.fontSize
         )
-        items.forEachIndexed { index, item ->
+        items.forEach { item ->
             Text(
                 text = "${item.material} ${item.count} ${item.length} ${item.ratio}%",
                 color = textColor,

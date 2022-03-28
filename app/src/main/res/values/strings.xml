@@ -12,5 +12,10 @@
     <string name="info_icon">Info icon</string>
     <string name="app_logo">App logo</string>
     <string name="profile_photo_text">Profile photo</string>
+    <string name="count_text">count</string>
+    <string name="process_text">process</string>
+    <string name="section_text">section</string>
+    <string name="machine_text">machine</string>
+    <string name="mixing_text">mixing</string>
 
 </resources>
