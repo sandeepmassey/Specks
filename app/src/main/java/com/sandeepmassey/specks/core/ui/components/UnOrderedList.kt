@@ -1,4 +1,4 @@
-package com.sandeepmassey.specks.core.ui
+package com.sandeepmassey.specks.core.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.ContentAlpha

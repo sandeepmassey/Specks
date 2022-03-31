@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Specks</string>
-    <string name="sign_in_title">Sign in</string>
     <string name="sign_in_subtitle">to continue to Specks</string>
     <string name="search_icon">Search</string>
     <string name="network_error_icon">Network Error</string>
@@ -17,5 +16,13 @@
     <string name="section_text">section</string>
     <string name="machine_text">machine</string>
     <string name="mixing_text">mixing</string>
+    <string name="vertical_menu_text">Vertical menu</string>
+    <string name="delete_account_text">Delete account</string>
+    <string name="sign_in_text">Sign in</string>
+    <string name="sign_out_text">Sign out</string>
+    <string name="star_icon">Start icon</string>
+    <string name="sign_in_with_google_text">Sign in with Google</string>
+    <string name="please_wait_text">Please wait…</string>
+    <string name="google_logo">Google Logo</string>
 
 </resources>

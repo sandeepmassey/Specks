@@ -22,6 +22,9 @@ fun RecipeScreen(
     Scaffold(
         topBar = {
             RecipeTopBar(
+                onStarClicked = {
+
+                },
                 onCloseClicked = {
                     navController.popBackStack()
                 }

@@ -18,7 +18,7 @@ fun RecipesTopBar(
         title = {
             Text(
                 text = stringResource(R.string.explore_text),
-                color = MaterialTheme.colors.primary
+                color = MaterialTheme.colors.onSurface
             )
         },
         backgroundColor = MaterialTheme.colors.background,

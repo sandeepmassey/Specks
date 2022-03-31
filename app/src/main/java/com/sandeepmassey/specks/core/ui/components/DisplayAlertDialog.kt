@@ -1,4 +1,4 @@
-package com.sandeepmassey.specks.core.ui
+package com.sandeepmassey.specks.core.ui.components
 
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable

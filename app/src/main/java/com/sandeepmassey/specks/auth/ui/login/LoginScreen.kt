@@ -1,7 +1,7 @@
 package com.sandeepmassey.specks.auth.ui.login
 
 import android.app.Activity
-import android.util.Log
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -13,8 +13,8 @@ import com.sandeepmassey.specks.auth.data.util.StartActivityForResult
 import com.sandeepmassey.specks.auth.data.util.signIn
 import com.sandeepmassey.specks.auth.dom.model.AuthApiRequest
 import com.sandeepmassey.specks.auth.dom.model.AuthApiResponse
-import com.sandeepmassey.specks.navigation.Screen
 import com.sandeepmassey.specks.core.util.RequestState
+import com.sandeepmassey.specks.navigation.Screen
 
 /**
  * Created by Sandeep Massey on 18-03-2022
@@ -29,12 +29,8 @@ fun LoginScreen(
     val messageBarState by loginViewModel.messageBarState
     val apiResponse by loginViewModel.apiResponse
 
-    Log.d("LoginScreen", apiResponse.toString())
-
     Scaffold(
-        topBar = {
-            LoginTopBar()
-        },
+        backgroundColor = MaterialTheme.colors.background,
         content = {
             LoginContent(
                 signedInState = signedInState,
@@ -78,7 +74,7 @@ fun LoginScreen(
             is RequestState.Success -> {
                 val response = (apiResponse as RequestState.Success<AuthApiResponse>).data.success
                 if (response) {
-                    navigateToProfileScreen(navController = navController)
+                    navigateToRecipesScreen(navController = navController)
                 } else {
                     loginViewModel.saveSignedInState(signedIn = false)
                 }
@@ -88,10 +84,10 @@ fun LoginScreen(
     }
 }
 
-private fun navigateToProfileScreen(
+private fun navigateToRecipesScreen(
     navController: NavHostController
 ) {
-    navController.navigate(route = Screen.Profile.route) {
+    navController.navigate(route = Screen.Recipes.route) {
         popUpTo(route = Screen.Login.route) {
             inclusive = true
         }

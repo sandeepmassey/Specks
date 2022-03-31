@@ -2,7 +2,10 @@ package com.sandeepmassey.specks.recipes.ui.recipe_details
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -21,15 +24,18 @@ fun RecipeBackgroundContent(
         modifier = Modifier
             .background(MaterialTheme.colors.background)
             .padding(all = SMALL_PADDING)
+            .verticalScroll(rememberScrollState())
     ) {
         selectedRecipe.parameters.forEach { map ->
             map.forEach { entry ->
                 if (entry.key == "id") {
                     Text(
                         modifier = Modifier
+                            .fillMaxWidth()
                             .background(color = MaterialTheme.colors.secondary),
                         text = entry.value,
-                        fontSize = MaterialTheme.typography.caption.fontSize
+                        color = MaterialTheme.colors.onSecondary,
+                        fontSize = MaterialTheme.typography.subtitle1.fontSize
                     )
                 } else {
                     Text(
@@ -40,4 +46,5 @@ fun RecipeBackgroundContent(
             }
         }
     }
+
 }

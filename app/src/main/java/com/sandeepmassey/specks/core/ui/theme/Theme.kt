@@ -10,25 +10,25 @@ import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
+    primary = Greenish,
     primaryVariant = Purple700,
-    secondary = Teal200,
+    secondary = Reddish,
     secondaryVariant = Teal700,
     background = BackgroundLight,
     surface = SurfaceLight,
     error = ErrorLight,
     onPrimary = Color.White,
-    onSecondary = Color.Black,
+    onSecondary = SurfaceLight,
     onBackground = Color.Black,
     onSurface = Color.Black,
     onError = Color.White
 )
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
+    primary = LightGreenish,
     primaryVariant = Purple700,
-    secondary = Teal200,
-    secondaryVariant = Teal200,
+    secondary = Orangish,
+    secondaryVariant = Orangish,
     background = BackgroundDark,
     surface = SurfaceDark,
     error = ErrorDark,
@@ -46,10 +46,12 @@ fun SpecksTheme(
 ) {
     val systemUiController = rememberSystemUiController()
     val colors: Colors = if (darkTheme) {
-        systemUiController.setSystemBarsColor(color = SurfaceDark)
+        systemUiController.setStatusBarColor(color = BackgroundDark)
+        systemUiController.setNavigationBarColor(color = SurfaceDark)
         DarkColorPalette
     } else {
-        systemUiController.setSystemBarsColor(color = SurfaceLight)
+        systemUiController.setStatusBarColor(color = BackgroundLight)
+        systemUiController.setNavigationBarColor(color = SurfaceLight)
         LightColorPalette
     }
 

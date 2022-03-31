@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.sandeepmassey.specks.core.ui.AppBottomBar
 import com.sandeepmassey.specks.navigation.Screen
 
 /**
@@ -23,6 +24,11 @@ fun RecipesScreen(
                 onSearchClicked = {
                     navController.navigate(Screen.Search.route)
                 }
+            )
+        },
+        bottomBar = {
+            AppBottomBar(
+                navController = navController
             )
         },
         content = {

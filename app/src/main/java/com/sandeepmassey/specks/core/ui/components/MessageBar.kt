@@ -1,4 +1,4 @@
-package com.sandeepmassey.specks.core.ui
+package com.sandeepmassey.specks.core.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -40,10 +40,10 @@ fun MessageBar(
         if (messageBarState.error != null) {
             errorMessage = when (messageBarState.error) {
                 is SocketTimeoutException -> {
-                    "Connection Timeout Exception."
+                    "Connection timeout error."
                 }
                 is ConnectException -> {
-                    "Internet Connection Unavailable."
+                    "Internet connection unavailable."
                 }
                 else -> {
                     "${messageBarState.error.message}"

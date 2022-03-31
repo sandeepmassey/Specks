@@ -5,7 +5,9 @@ import androidx.compose.animation.core.tween
 import androidx.compose.material.ContentAlpha
 import androidx.compose.runtime.*
 import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
 import com.sandeepmassey.specks.R
+import com.sandeepmassey.specks.recipes.dom.model.Recipe
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
@@ -14,7 +16,8 @@ import java.net.SocketTimeoutException
  */
 @Composable
 fun EmptyScreen(
-    error: LoadState.Error? = null
+    error: LoadState.Error? = null,
+    recipes: LazyPagingItems<Recipe>? = null
 ) {
     var message by remember {
         mutableStateOf("Find your Favorite Recipe!")
@@ -42,7 +45,9 @@ fun EmptyScreen(
     EmptyContent(
         alphaAnim = alphaAnim,
         icon = icon,
-        message = message
+        message = message,
+        recipes = recipes,
+        error = error
     )
 }
 

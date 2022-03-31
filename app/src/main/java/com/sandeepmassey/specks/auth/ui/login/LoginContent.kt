@@ -16,8 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.sandeepmassey.specks.R
 import com.sandeepmassey.specks.auth.dom.model.MessageBarState
-import com.sandeepmassey.specks.core.ui.GoogleButton
-import com.sandeepmassey.specks.core.ui.MessageBar
+import com.sandeepmassey.specks.core.ui.components.GoogleButton
+import com.sandeepmassey.specks.core.ui.components.MessageBar
 
 /**
  * Created by Sandeep Massey on 18-03-2022
@@ -50,7 +50,7 @@ fun LoginContent(
                 contentDescription = stringResource(id = R.string.app_logo)
             )
             Text(
-                text = stringResource(id = R.string.sign_in_title),
+                text = stringResource(id = R.string.sign_in_text),
                 fontWeight = FontWeight.Bold,
                 fontSize = MaterialTheme.typography.h5.fontSize
             )

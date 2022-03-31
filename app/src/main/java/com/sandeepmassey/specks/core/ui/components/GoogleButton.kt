@@ -1,4 +1,4 @@
-package com.sandeepmassey.specks.core.ui
+package com.sandeepmassey.specks.core.ui.components
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
@@ -13,10 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.sandeepmassey.specks.R
-import com.sandeepmassey.specks.core.ui.theme.Purple500
 import com.sandeepmassey.specks.core.ui.theme.Shapes
 
 /**
@@ -26,14 +26,14 @@ import com.sandeepmassey.specks.core.ui.theme.Shapes
 fun GoogleButton(
     modifier: Modifier = Modifier,
     loadingState: Boolean = false,
-    primaryText: String = "Sign in with Google",
-    secondaryText: String = "Please wait...",
+    primaryText: String = stringResource(id = R.string.sign_in_with_google_text),
+    secondaryText: String = stringResource(id = R.string.please_wait_text),
     icon: Int = R.drawable.ic_google_logo,
     shape: Shape = Shapes.medium,
     borderColor: Color = Color.LightGray,
     backgroundColor: Color = MaterialTheme.colors.surface,
     borderStrokeWidth: Dp = 1.dp,
-    progressIndicatorColor: Color = Purple500,
+    progressIndicatorColor: Color = MaterialTheme.colors.onSurface,
     onClick: () -> Unit
 ) {
     var buttonText by remember { mutableStateOf(primaryText) }
@@ -65,7 +65,7 @@ fun GoogleButton(
         ) {
             Icon(
                 painter = painterResource(id = icon),
-                contentDescription = "Google Logo",
+                contentDescription = stringResource(id = R.string.google_logo),
                 tint = Color.Unspecified
             )
             Spacer(modifier = Modifier.width(8.dp))

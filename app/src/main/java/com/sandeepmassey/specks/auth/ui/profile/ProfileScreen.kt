@@ -1,6 +1,7 @@
 package com.sandeepmassey.specks.auth.ui.profile
 
 import android.app.Activity
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -14,6 +15,7 @@ import com.sandeepmassey.specks.auth.data.util.StartActivityForResult
 import com.sandeepmassey.specks.auth.data.util.signIn
 import com.sandeepmassey.specks.auth.dom.model.AuthApiRequest
 import com.sandeepmassey.specks.auth.dom.model.AuthApiResponse
+import com.sandeepmassey.specks.core.ui.AppBottomBar
 import com.sandeepmassey.specks.core.util.RequestState
 import com.sandeepmassey.specks.navigation.Screen
 import retrofit2.HttpException
@@ -36,15 +38,15 @@ fun ProfileScreen(
     val lastName by profileViewModel.lastName
 
     Scaffold(
+        backgroundColor = MaterialTheme.colors.background,
         topBar = {
-            ProfileTopBar(
-                onSave = {
-                    //profileViewModel.updateUserInfo()
-                    navigateToRecipesScreen(navController = navController)
-                },
-                onDeleteAllConfirmed = {
-                    profileViewModel.deleteUser()
-                }
+            ProfileTopBar {
+                profileViewModel.deleteUser()
+            }
+        },
+        bottomBar = {
+            AppBottomBar(
+                navController = navController
             )
         },
         content = {
@@ -113,16 +115,6 @@ private fun navigateToLoginScreen(
     navController.navigate(route = Screen.Login.route) {
         popUpTo(route = Screen.Profile.route) {
             inclusive = true
-        }
-    }
-}
-
-private fun navigateToRecipesScreen(
-    navController: NavHostController
-) {
-    navController.navigate(route = Screen.Recipes.route) {
-        popUpTo(route = Screen.Profile.route) {
-            //inclusive = true
         }
     }
 }

@@ -3,31 +3,28 @@ package com.sandeepmassey.specks.auth.ui.profile
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Save
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.stringResource
 import com.sandeepmassey.specks.R
-import com.sandeepmassey.specks.core.ui.DisplayAlertDialog
+import com.sandeepmassey.specks.core.ui.components.DisplayAlertDialog
 
 /**
  * Created by Sandeep Massey on 18-03-2022
  */
 @Composable
 fun ProfileTopBar(
-    onSave: () -> Unit,
     onDeleteAllConfirmed: () -> Unit
 ) {
     TopAppBar(
         title = {
             Text(
                 text = stringResource(id = R.string.profile_text),
-                color = MaterialTheme.colors.primary
+                color = MaterialTheme.colors.onSurface
             )
         },
         backgroundColor = MaterialTheme.colors.background,
         actions = {
             ProfileTopBarActions(
-                onSave = onSave,
                 onDeleteAllConfirmed = onDeleteAllConfirmed
             )
         }
@@ -36,7 +33,6 @@ fun ProfileTopBar(
 
 @Composable
 fun ProfileTopBarActions(
-    onSave: () -> Unit,
     onDeleteAllConfirmed: () -> Unit,
 ) {
     var openDialog by remember { mutableStateOf(false) }
@@ -47,19 +43,7 @@ fun ProfileTopBarActions(
         onDialogClosed = { openDialog = false }
     )
 
-    SaveAction(onSave = onSave)
     DeleteAllAction(onDelete = { openDialog = true})
-}
-
-@Composable
-fun SaveAction(onSave: () -> Unit) {
-    IconButton(onClick = onSave) {
-        Icon(
-            Icons.Default.Save,
-            contentDescription = "Save Icon",
-            tint = MaterialTheme.colors.primary
-        )
-    }
 }
 
 @Composable
@@ -69,8 +53,8 @@ fun DeleteAllAction(onDelete: () -> Unit) {
     IconButton(onClick = { expanded = true }) {
         Icon(
             Icons.Default.Menu,
-            contentDescription = "Vertical Menu",
-            tint = MaterialTheme.colors.primary
+            contentDescription = stringResource(id = R.string.vertical_menu_text),
+            tint = MaterialTheme.colors.onSurface
         )
         DropdownMenu(
             expanded = expanded,
@@ -83,7 +67,7 @@ fun DeleteAllAction(onDelete: () -> Unit) {
                 }
             ) {
                 Text(
-                    text = "Delete Account",
+                    text = stringResource(id = R.string.delete_account_text),
                     style = MaterialTheme.typography.subtitle2
                 )
             }

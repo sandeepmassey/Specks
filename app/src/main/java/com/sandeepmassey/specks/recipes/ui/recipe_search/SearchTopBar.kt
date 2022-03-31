@@ -1,7 +1,7 @@
 package com.sandeepmassey.specks.recipes.ui.recipe_search
 
 import androidx.compose.runtime.Composable
-import com.sandeepmassey.specks.core.ui.SearchWidget
+import com.sandeepmassey.specks.core.ui.components.SearchWidget
 
 /**
  * Created by Sandeep Massey on 23-03-2022

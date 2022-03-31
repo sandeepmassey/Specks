@@ -3,14 +3,12 @@ package com.sandeepmassey.specks.auth.ui.profile
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -20,8 +18,8 @@ import coil.compose.rememberImagePainter
 import com.sandeepmassey.specks.R
 import com.sandeepmassey.specks.auth.dom.model.AuthApiResponse
 import com.sandeepmassey.specks.auth.dom.model.MessageBarState
-import com.sandeepmassey.specks.core.ui.GoogleButton
-import com.sandeepmassey.specks.core.ui.MessageBar
+import com.sandeepmassey.specks.core.ui.components.GoogleButton
+import com.sandeepmassey.specks.core.ui.components.MessageBar
 import com.sandeepmassey.specks.core.ui.theme.Purple500
 import com.sandeepmassey.specks.core.util.RequestState
 
@@ -62,7 +60,7 @@ fun ProfileContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             val painter = rememberImagePainter(data = profilePhoto) {
-                crossfade(1000)
+                crossfade(500)
                 placeholder(R.drawable.ic_placeholder)
             }
             Image(
@@ -74,11 +72,10 @@ fun ProfileContent(
                 contentDescription = stringResource(id = R.string.profile_photo_text)
             )
             Text(
-                modifier = Modifier
-                    .alpha(ContentAlpha.medium),
                 text = stringResource(id = R.string.welcome_text),
                 fontSize = MaterialTheme.typography.h5.fontSize
             )
+            Spacer(modifier = Modifier.height(12.dp))
             Text(
                 text = "$firstName $lastName",
                 fontSize = MaterialTheme.typography.h6.fontSize,
@@ -95,10 +92,9 @@ fun ProfileContent(
             Spacer(modifier = Modifier.height(12.dp))
             GoogleButton(
                 modifier = Modifier
-                    .fillMaxWidth()
                     .padding(top = 24.dp),
-                primaryText = "Sign Out",
-                secondaryText = "Sign Out",
+                primaryText = stringResource(id = R.string.sign_out_text),
+                secondaryText = stringResource(id = R.string.sign_out_text),
                 onClick = onSignOutClicked
             )
         }

@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.sandeepmassey.specks.R
-import com.sandeepmassey.specks.core.ui.InfoBox
-import com.sandeepmassey.specks.core.ui.UnOrderedList
+import com.sandeepmassey.specks.core.ui.components.InfoBox
+import com.sandeepmassey.specks.core.ui.components.UnOrderedList
 import com.sandeepmassey.specks.core.ui.theme.EXTRA_SMALL_PADDING
 import com.sandeepmassey.specks.core.ui.theme.SMALL_PADDING
 import com.sandeepmassey.specks.recipes.dom.model.Recipe
@@ -48,6 +48,17 @@ fun RecipeBottomSheetContent(
                 smallText = stringResource(id = R.string.process_text),
                 textColor = MaterialTheme.colors.onSurface
             )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    horizontal = SMALL_PADDING,
+                    vertical = EXTRA_SMALL_PADDING
+                ),
+            horizontalArrangement = Arrangement.spacedBy(SMALL_PADDING),
+            verticalAlignment = Alignment.Top
+        ) {
             InfoBox(
                 bigText = selectedRecipe.section,
                 smallText = stringResource(id = R.string.section_text),
@@ -59,7 +70,6 @@ fun RecipeBottomSheetContent(
                 textColor = MaterialTheme.colors.onSurface
             )
         }
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()

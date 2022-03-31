@@ -5,18 +5,14 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sandeepmassey.specks.auth.data.util.Constants.MAX_LENGTH
-import com.sandeepmassey.specks.auth.data.util.EmptyFieldException
-import com.sandeepmassey.specks.auth.data.util.NothingToUpdateException
-import com.sandeepmassey.specks.auth.dom.model.*
+import com.sandeepmassey.specks.auth.dom.model.AuthApiRequest
+import com.sandeepmassey.specks.auth.dom.model.AuthApiResponse
+import com.sandeepmassey.specks.auth.dom.model.MessageBarState
+import com.sandeepmassey.specks.auth.dom.model.User
 import com.sandeepmassey.specks.auth.dom.repo.AuthRepository
 import com.sandeepmassey.specks.core.util.RequestState
-import com.sandeepmassey.specks.core.util.UIEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -73,61 +69,6 @@ class ProfileViewModel @Inject constructor(
             } catch (e: Exception) {
                 _apiResponse.value = RequestState.Error(e)
                 _messageBarState.value = MessageBarState(error = e)
-            }
-        }
-    }
-
-    fun updateUserInfo() {
-        _apiResponse.value = RequestState.Loading
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                if (user.value != null) {
-                    val response = repository.getUserInfo()
-                    verifyAndUpdate(currentUser = response)
-                }
-            } catch (e: Exception) {
-                _apiResponse.value = RequestState.Error(e)
-                _messageBarState.value = MessageBarState(error = e)
-            }
-        }
-    }
-
-    private fun verifyAndUpdate(currentUser: AuthApiResponse) {
-        val (verified, exception) = if (firstName.value.isEmpty() || lastName.value.isEmpty()) {
-            Pair(false, EmptyFieldException())
-        } else {
-            if (currentUser.user?.name?.split(" ")?.first() == firstName.value &&
-                currentUser.user.name.split(" ").last() == lastName.value
-            ) {
-                Pair(false, NothingToUpdateException())
-            } else {
-                Pair(true, null)
-            }
-        }
-
-        viewModelScope.launch(Dispatchers.IO) {
-            if (verified) {
-                try {
-                    val response = repository.updateUser(
-                        userUpdate = UserUpdate(
-                            firstName = firstName.value,
-                            lastName = lastName.value
-                        )
-                    )
-                    _apiResponse.value = RequestState.Success(response)
-                    _messageBarState.value = MessageBarState(
-                        message = response.message,
-                        error = response.error
-                    )
-                } catch (e: Exception) {
-                    _apiResponse.value = RequestState.Error(e)
-                    _messageBarState.value = MessageBarState(error = e)
-                }
-            } else {
-                _apiResponse.value = RequestState.Success(
-                    AuthApiResponse(success = false, error = exception)
-                )
-                _messageBarState.value = MessageBarState(error = exception)
             }
         }
     }
@@ -192,18 +133,6 @@ class ProfileViewModel @Inject constructor(
     fun saveSignedInState(signedIn: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.saveSignedInState(signedIn = signedIn)
-        }
-    }
-
-    fun updateFirstName(newName: String) {
-        if (newName.length < MAX_LENGTH) {
-            _firstName.value = newName
-        }
-    }
-
-    fun updateLastName(newName: String) {
-        if (newName.length < MAX_LENGTH) {
-            _lastName.value = newName
         }
     }
 
