@@ -20,7 +20,6 @@ import com.sandeepmassey.specks.auth.dom.model.AuthApiResponse
 import com.sandeepmassey.specks.auth.dom.model.MessageBarState
 import com.sandeepmassey.specks.core.ui.components.GoogleButton
 import com.sandeepmassey.specks.core.ui.components.MessageBar
-import com.sandeepmassey.specks.core.ui.theme.Purple500
 import com.sandeepmassey.specks.core.util.RequestState
 
 /**
@@ -45,8 +44,7 @@ fun ProfileContent(
         Column(modifier = Modifier.weight(1f)) {
             if (apiResponse is RequestState.Loading) {
                 LinearProgressIndicator(
-                    modifier = Modifier.fillMaxWidth(),
-                    color = Purple500
+                    modifier = Modifier.fillMaxWidth()
                 )
             } else {
                 MessageBar(messageBarState = messageBarState)

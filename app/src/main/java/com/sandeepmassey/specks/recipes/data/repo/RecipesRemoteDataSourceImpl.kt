@@ -10,7 +10,7 @@ import com.sandeepmassey.specks.recipes.data.page_source.SearchRecipesSource
 import com.sandeepmassey.specks.recipes.data.remote.RecipesApi
 import com.sandeepmassey.specks.recipes.dom.model.Recipe
 import com.sandeepmassey.specks.recipes.dom.repo.RecipesRemoteDataSource
-import com.sandeepmassey.specks.recipes.dom.util.Constants.ITEMS_PER_PAGE
+import com.sandeepmassey.specks.recipes.dom.util.RecipesConstants.ITEMS_PER_PAGE
 import kotlinx.coroutines.flow.Flow
 
 /**

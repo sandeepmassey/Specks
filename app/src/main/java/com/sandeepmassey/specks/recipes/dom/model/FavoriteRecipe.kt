@@ -2,18 +2,18 @@ package com.sandeepmassey.specks.recipes.dom.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.sandeepmassey.specks.recipes.dom.util.RecipesConstants.RECIPES_TABLE
+import com.sandeepmassey.specks.recipes.dom.util.RecipesConstants.FAVORITE_RECIPES_TABLE
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Created by Sandeep Massey on 21-03-2022
+ * Created by Sandeep Massey on 03-04-2022
  */
 @Serializable
-@Entity(tableName = RECIPES_TABLE)
-class Recipe(
+@Entity(tableName = FAVORITE_RECIPES_TABLE)
+class FavoriteRecipe(
     @PrimaryKey(autoGenerate = false)
-    @SerialName("_id")
+    @SerialName("id")
     val id: String,
     @SerialName("Process")
     val process: String,
@@ -27,16 +27,4 @@ class Recipe(
     val mixing: List<Mixing>,
     @SerialName("Parameters")
     val parameters: List<Map<String, String>>
-) {
-    fun toFavoriteRecipe(): FavoriteRecipe =
-        FavoriteRecipe(
-            id,
-            process,
-            section,
-            machine,
-            yarnCount,
-            mixing,
-            parameters
-        )
-
-}
+)

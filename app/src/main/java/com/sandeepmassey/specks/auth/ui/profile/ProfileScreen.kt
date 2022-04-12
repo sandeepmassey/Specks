@@ -1,5 +1,6 @@
 package com.sandeepmassey.specks.auth.ui.profile
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -15,7 +16,7 @@ import com.sandeepmassey.specks.auth.data.util.StartActivityForResult
 import com.sandeepmassey.specks.auth.data.util.signIn
 import com.sandeepmassey.specks.auth.dom.model.AuthApiRequest
 import com.sandeepmassey.specks.auth.dom.model.AuthApiResponse
-import com.sandeepmassey.specks.core.ui.AppBottomBar
+import com.sandeepmassey.specks.core.ui.components.AppBottomBar
 import com.sandeepmassey.specks.core.util.RequestState
 import com.sandeepmassey.specks.navigation.Screen
 import retrofit2.HttpException
@@ -23,6 +24,7 @@ import retrofit2.HttpException
 /**
  * Created by Sandeep Massey on 18-03-2022
  */
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @ExperimentalCoilApi
 @Composable
 fun ProfileScreen(
@@ -40,9 +42,11 @@ fun ProfileScreen(
     Scaffold(
         backgroundColor = MaterialTheme.colors.background,
         topBar = {
-            ProfileTopBar {
-                profileViewModel.deleteUser()
-            }
+            ProfileTopBar(
+                onDeleteAllConfirmed = {
+                    profileViewModel.deleteUser()
+                }
+            )
         },
         bottomBar = {
             AppBottomBar(
@@ -56,10 +60,11 @@ fun ProfileScreen(
                 firstName = firstName,
                 lastName = lastName,
                 emailAddress = user?.emailAddress,
-                profilePhoto = user?.profilePhoto
-            ) {
-                profileViewModel.clearSession()
-            }
+                profilePhoto = user?.profilePhoto,
+                onSignOutClicked = {
+                    profileViewModel.clearSession()
+                }
+            )
         }
     )
 
@@ -112,9 +117,6 @@ fun ProfileScreen(
 private fun navigateToLoginScreen(
     navController: NavHostController
 ) {
-    navController.navigate(route = Screen.Login.route) {
-        popUpTo(route = Screen.Profile.route) {
-            inclusive = true
-        }
-    }
+    navController.popBackStack(route = Screen.Profile.route, inclusive = true)
+    navController.navigate(route = Screen.Login.route)
 }

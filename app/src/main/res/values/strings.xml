@@ -20,9 +20,11 @@
     <string name="delete_account_text">Delete account</string>
     <string name="sign_in_text">Sign in</string>
     <string name="sign_out_text">Sign out</string>
-    <string name="star_icon">Start icon</string>
+    <string name="star_icon">Star icon</string>
     <string name="sign_in_with_google_text">Sign in with Google</string>
     <string name="please_wait_text">Please wait…</string>
     <string name="google_logo">Google Logo</string>
+    <string name="message_bar_icon">MessageBar Icon</string>
+    <string name="delete_icon">Delete icon</string>
 
 </resources>

@@ -38,6 +38,8 @@ fun ProfileTopBarActions(
     var openDialog by remember { mutableStateOf(false) }
 
     DisplayAlertDialog(
+        title = "Delete account",
+        message = "Are you sure you want to delete your account?",
         openDialog = openDialog,
         onYesClicked = { onDeleteAllConfirmed() },
         onDialogClosed = { openDialog = false }

@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.sandeepmassey.specks.recipes.data.local.RecipesDatabase
 import com.sandeepmassey.specks.recipes.data.repo.RecipesLocalDataSourceImpl
 import com.sandeepmassey.specks.recipes.dom.repo.RecipesLocalDataSource
-import com.sandeepmassey.specks.recipes.dom.util.Constants.RECIPES_DATABASE
+import com.sandeepmassey.specks.recipes.dom.util.RecipesConstants.RECIPES_DATABASE
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

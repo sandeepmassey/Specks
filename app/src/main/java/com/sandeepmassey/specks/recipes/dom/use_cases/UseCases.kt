@@ -6,5 +6,9 @@ package com.sandeepmassey.specks.recipes.dom.use_cases
 data class UseCases(
     val getAllRecipesUseCase: GetAllRecipesUseCase,
     val getSelectedRecipeUseCase: GetSelectedRecipeUseCase,
-    val searchRecipesUseCase: SearchRecipesUseCase
+    val searchRecipesUseCase: SearchRecipesUseCase,
+    val removeAllRecipesUseCase: RemoveAllRecipesUseCase,
+    val getAllFavoriteRecipesUseCase: GetAllFavoriteRecipesUseCase,
+    val addFavoriteRecipeUseCase: AddFavoriteRecipeUseCase,
+    val removeFavoriteRecipeUseCase: RemoveFavoriteRecipeUseCase,
 )

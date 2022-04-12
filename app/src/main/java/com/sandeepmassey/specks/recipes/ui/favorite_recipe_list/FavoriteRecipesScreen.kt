@@ -1,31 +1,33 @@
-package com.sandeepmassey.specks.recipes.ui.recipe_list
+package com.sandeepmassey.specks.recipes.ui.favorite_recipe_list
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import androidx.paging.compose.collectAsLazyPagingItems
 import com.sandeepmassey.specks.core.ui.components.AppBottomBar
+import com.sandeepmassey.specks.core.util.collectAsStateLifecycleAware
 import com.sandeepmassey.specks.navigation.Screen
 
 /**
- * Created by Sandeep Massey on 21-03-2022
+ * Created by Sandeep Massey on 03-04-2022
  */
+@ExperimentalMaterialApi
 @Composable
-fun RecipesScreen(
+fun FavoriteRecipesScreen(
     navController: NavHostController,
-    recipesViewModel: RecipesViewModel = hiltViewModel()
+    favoriteRecipesViewModel: FavoriteRecipesViewModel = hiltViewModel()
 ) {
-    val allRecipes = recipesViewModel.getAllRecipes.collectAsLazyPagingItems()
+    val allFavoriteRecipes by
+    favoriteRecipesViewModel.getAllFavoriteRecipes.collectAsStateLifecycleAware(initial = emptyList())
 
     Scaffold(
         topBar = {
-            RecipesTopBar(
+            FavoriteRecipesTopBar(
                 onSearchClicked = {
                     navController.navigate(Screen.Search.route)
                 }
@@ -37,14 +39,9 @@ fun RecipesScreen(
             )
         }
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(padding),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            RecipesListContent(
-                recipes = allRecipes,
+        Column(modifier = Modifier.padding(padding)) {
+            FavoriteRecipesListContent(
+                recipes = allFavoriteRecipes,
                 navController = navController
             )
         }

@@ -8,9 +8,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import coil.annotation.ExperimentalCoilApi
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.sandeepmassey.specks.auth.ui.login.LoginScreen
 import com.sandeepmassey.specks.auth.ui.profile.ProfileScreen
-import com.sandeepmassey.specks.recipes.dom.util.Constants.DETAILS_ARGUMENT_KEY
+import com.sandeepmassey.specks.recipes.dom.util.RecipesConstants.DETAILS_ARGUMENT_KEY
+import com.sandeepmassey.specks.recipes.ui.favorite_recipe_list.FavoriteRecipesScreen
 import com.sandeepmassey.specks.recipes.ui.recipe_details.RecipeScreen
 import com.sandeepmassey.specks.recipes.ui.recipe_list.RecipesScreen
 import com.sandeepmassey.specks.recipes.ui.recipe_search.SearchScreen
@@ -18,10 +20,13 @@ import com.sandeepmassey.specks.recipes.ui.recipe_search.SearchScreen
 /**
  * Created by Sandeep Massey on 18-03-2022
  */
+@ExperimentalPermissionsApi
 @ExperimentalMaterialApi
 @ExperimentalCoilApi
 @Composable
-fun SetupNavGraph(navController: NavHostController) {
+fun SetupNavGraph(
+    navController: NavHostController
+) {
     NavHost(
         navController = navController,
         startDestination = Screen.Login.route
@@ -50,6 +55,10 @@ fun SetupNavGraph(navController: NavHostController) {
             })
         ) {
             RecipeScreen(navController = navController)
+        }
+        // Favorite recipes
+        composable(route = Screen.FavoriteRecipes.route) {
+            FavoriteRecipesScreen(navController = navController)
         }
     }
 }

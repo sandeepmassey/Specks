@@ -11,7 +11,5 @@ import kotlinx.coroutines.flow.Flow
 class GetAllRecipesUseCase(
     private val repository: RecipesRepository
 ) {
-    operator fun invoke(): Flow<PagingData<Recipe>> {
-        return repository.getAllRecipes()
-    }
+    operator fun invoke(): Flow<PagingData<Recipe>> = repository.getAllRecipes()
 }

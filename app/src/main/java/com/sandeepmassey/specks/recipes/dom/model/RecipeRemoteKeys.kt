@@ -2,7 +2,7 @@ package com.sandeepmassey.specks.recipes.dom.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.sandeepmassey.specks.recipes.dom.util.Constants.RECIPES_REMOTE_KEYS_TABLE
+import com.sandeepmassey.specks.recipes.dom.util.RecipesConstants.RECIPES_REMOTE_KEYS_TABLE
 
 /**
  * Created by Sandeep Massey on 21-03-2022

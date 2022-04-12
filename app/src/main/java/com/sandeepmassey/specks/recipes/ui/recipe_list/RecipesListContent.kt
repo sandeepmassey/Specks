@@ -27,7 +27,7 @@ fun RecipesListContent(
 
     if (result) {
         LazyColumn(
-            modifier = Modifier.fillMaxWidth(1F),
+            modifier = Modifier.fillMaxWidth(),
             contentPadding = PaddingValues(all = SMALL_PADDING),
             verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
         ) {
@@ -62,7 +62,7 @@ fun handlePagingResult(
 
         return when {
             loadState.refresh is LoadState.Loading -> {
-                LinearProgressIndicator()
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
                 false
             }
             error != null -> {

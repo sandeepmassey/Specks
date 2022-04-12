@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.sandeepmassey.specks.recipes.data.local.dao.RecipeDao
 import com.sandeepmassey.specks.recipes.data.local.dao.RecipeRemoteKeysDao
+import com.sandeepmassey.specks.recipes.dom.model.FavoriteRecipe
 import com.sandeepmassey.specks.recipes.dom.model.Recipe
 import com.sandeepmassey.specks.recipes.dom.model.RecipeRemoteKeys
 
@@ -14,7 +15,8 @@ import com.sandeepmassey.specks.recipes.dom.model.RecipeRemoteKeys
 @Database(
     entities = [
         Recipe::class,
-        RecipeRemoteKeys::class
+        RecipeRemoteKeys::class,
+        FavoriteRecipe::class
     ],
     version = 1,
     exportSchema = false

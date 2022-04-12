@@ -1,5 +1,6 @@
 package com.sandeepmassey.specks.recipes.ui.recipe_search
 
+import android.annotation.SuppressLint
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -11,13 +12,14 @@ import com.sandeepmassey.specks.recipes.ui.recipe_list.RecipesListContent
 /**
  * Created by Sandeep Massey on 23-03-2022
  */
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
     navController: NavHostController,
     searchViewModel: SearchViewModel = hiltViewModel()
 ) {
     val searchQuery by searchViewModel.searchQuery
-    val heroes = searchViewModel.searchedRecipes.collectAsLazyPagingItems()
+    val recipes = searchViewModel.searchedRecipes.collectAsLazyPagingItems()
 
     Scaffold(
         topBar = {
@@ -36,7 +38,7 @@ fun SearchScreen(
         },
         content = {
             RecipesListContent(
-                recipes = heroes,
+                recipes = recipes,
                 navController = navController
             )
         }

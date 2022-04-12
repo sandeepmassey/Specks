@@ -9,8 +9,8 @@ import androidx.compose.ui.text.font.FontWeight
  */
 @Composable
 fun DisplayAlertDialog(
-    title: String = "Delete your account?",
-    message: String = "Are you sure you want to delete your account?",
+    title: String = "",
+    message: String = "",
     openDialog: Boolean,
     onYesClicked: () -> Unit,
     onDialogClosed: () -> Unit

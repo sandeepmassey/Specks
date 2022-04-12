@@ -10,14 +10,18 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.sandeepmassey.specks.core.ui.theme.SpecksTheme
+import com.sandeepmassey.specks.core.util.StartCacheCleaner
 import com.sandeepmassey.specks.navigation.SetupNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalPermissionsApi
 @ExperimentalMaterialApi
 @ExperimentalCoilApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -28,8 +32,10 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
                     SetupNavGraph(navController = navController)
+                    StartCacheCleaner()
                 }
             }
         }
     }
+
 }

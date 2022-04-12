@@ -1,11 +1,10 @@
 package com.sandeepmassey.specks.recipes.data.local.dao
 
 import androidx.paging.PagingSource
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
+import com.sandeepmassey.specks.recipes.dom.model.FavoriteRecipe
 import com.sandeepmassey.specks.recipes.dom.model.Recipe
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by Sandeep Massey on 21-03-2022
@@ -24,4 +23,17 @@ interface RecipeDao {
 
     @Query("DELETE FROM recipes_table")
     suspend fun removeAllRecipes()
+
+    @Query("SELECT * FROM favorite_recipes_table ORDER BY id ASC")
+    fun getAllFavoriteRecipes(): Flow<List<FavoriteRecipe>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addFavoriteRecipe(favoriteRecipe: FavoriteRecipe)
+
+    @Delete
+    suspend fun removeFavoriteRecipe(favoriteRecipe: FavoriteRecipe)
+
+    @Query("DELETE FROM favorite_recipes_table")
+    suspend fun removeAllFavoriteRecipes()
+
 }

@@ -1,5 +1,6 @@
 package com.sandeepmassey.specks.auth.ui.login
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -19,6 +20,7 @@ import com.sandeepmassey.specks.navigation.Screen
 /**
  * Created by Sandeep Massey on 18-03-2022
  */
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LoginScreen(
     navController: NavHostController,
@@ -87,9 +89,6 @@ fun LoginScreen(
 private fun navigateToRecipesScreen(
     navController: NavHostController
 ) {
-    navController.navigate(route = Screen.Recipes.route) {
-        popUpTo(route = Screen.Login.route) {
-            inclusive = true
-        }
-    }
+    navController.popBackStack(route = Screen.Login.route, inclusive = true)
+    navController.navigate(route = Screen.Recipes.route)
 }

@@ -12,10 +12,7 @@ import com.sandeepmassey.specks.auth.dom.repo.AuthRepository
 import com.sandeepmassey.specks.auth.dom.repo.DataStoreOperations
 import com.sandeepmassey.specks.core.util.Constants.PREFERENCES_NAME
 import com.sandeepmassey.specks.recipes.data.repo.RecipesRepository
-import com.sandeepmassey.specks.recipes.dom.use_cases.GetAllRecipesUseCase
-import com.sandeepmassey.specks.recipes.dom.use_cases.GetSelectedRecipeUseCase
-import com.sandeepmassey.specks.recipes.dom.use_cases.SearchRecipesUseCase
-import com.sandeepmassey.specks.recipes.dom.use_cases.UseCases
+import com.sandeepmassey.specks.recipes.dom.use_cases.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -66,7 +63,11 @@ object RepositoryModule {
         return UseCases(
             getAllRecipesUseCase = GetAllRecipesUseCase(repository),
             getSelectedRecipeUseCase = GetSelectedRecipeUseCase(repository),
-            searchRecipesUseCase = SearchRecipesUseCase(repository)
+            searchRecipesUseCase = SearchRecipesUseCase(repository),
+            removeAllRecipesUseCase = RemoveAllRecipesUseCase(repository),
+            getAllFavoriteRecipesUseCase = GetAllFavoriteRecipesUseCase(repository),
+            addFavoriteRecipeUseCase = AddFavoriteRecipeUseCase(repository),
+            removeFavoriteRecipeUseCase = RemoveFavoriteRecipeUseCase(repository)
         )
     }
 }

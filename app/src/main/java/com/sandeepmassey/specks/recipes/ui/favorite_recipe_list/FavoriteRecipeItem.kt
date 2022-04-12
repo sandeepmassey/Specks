@@ -1,4 +1,4 @@
-package com.sandeepmassey.specks.recipes.ui.recipe_list
+package com.sandeepmassey.specks.recipes.ui.favorite_recipe_list
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,14 +16,14 @@ import com.sandeepmassey.specks.core.ui.components.UnOrderedList
 import com.sandeepmassey.specks.core.ui.theme.EXTRA_SMALL_PADDING
 import com.sandeepmassey.specks.core.ui.theme.SMALL_PADDING
 import com.sandeepmassey.specks.navigation.Screen
-import com.sandeepmassey.specks.recipes.dom.model.Recipe
+import com.sandeepmassey.specks.recipes.dom.model.FavoriteRecipe
 
 /**
  * Created by Sandeep Massey on 21-03-2022
  */
 @Composable
-fun RecipeItem(
-    recipe: Recipe,
+fun FavoriteRecipeItem(
+    recipe: FavoriteRecipe,
     navController: NavHostController
 ) {
     Box(

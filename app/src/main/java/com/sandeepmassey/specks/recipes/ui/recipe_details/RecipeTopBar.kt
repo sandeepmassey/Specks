@@ -13,8 +13,8 @@ import com.sandeepmassey.specks.R
  */
 @Composable
 fun RecipeTopBar(
-    onCloseClicked: () -> Unit,
-    onStarClicked: () -> Unit
+    onStarClicked: () -> Unit,
+    onCloseClicked: () -> Unit
 ) {
     TopAppBar(
         title = {
@@ -25,18 +25,47 @@ fun RecipeTopBar(
         },
         backgroundColor = MaterialTheme.colors.background,
         actions = {
-            IconButton(onClick = onStarClicked) {
-                Icon(
-                    imageVector = Icons.Default.Star,
-                    contentDescription = stringResource(id = R.string.star_icon)
-                )
-            }
-            IconButton(onClick = onCloseClicked) {
-                Icon(
-                    imageVector = Icons.Default.Close,
-                    contentDescription = stringResource(R.string.close_icon)
-                )
-            }
+            RecipeTopBarActions(
+                onStarClicked = onStarClicked,
+                onCloseClicked = onCloseClicked
+            )
         }
     )
+}
+
+@Composable
+fun RecipeTopBarActions(
+    onStarClicked: () -> Unit,
+    onCloseClicked: () -> Unit
+) {
+    StarAction(onStar = onStarClicked)
+    CloseAction(onClose = onCloseClicked)
+}
+
+@Composable
+fun StarAction(
+    onStar: () -> Unit
+) {
+    IconButton(
+        onClick = onStar
+    ) {
+        Icon(
+            imageVector = Icons.Filled.Star,
+            contentDescription = stringResource(id = R.string.star_icon)
+        )
+    }
+}
+
+@Composable
+fun CloseAction(
+    onClose: () -> Unit
+) {
+    IconButton(
+        onClick = onClose
+    ) {
+        Icon(
+            imageVector = Icons.Default.Close,
+            contentDescription = stringResource(id = R.string.close_icon)
+        )
+    }
 }

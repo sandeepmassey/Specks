@@ -16,9 +16,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.sandeepmassey.specks.R
 import com.sandeepmassey.specks.auth.dom.model.MessageBarState
 import com.sandeepmassey.specks.core.ui.theme.ErrorLight
 import com.sandeepmassey.specks.core.ui.theme.Teal700
@@ -91,7 +93,7 @@ fun Message(
             imageVector =
             if (messageBarState.error != null) Icons.Default.Warning
             else Icons.Default.Check,
-            contentDescription = "Message Bar Icon",
+            contentDescription = stringResource(id = R.string.message_bar_icon),
             tint = Color.White
         )
         Spacer(modifier = Modifier.width(12.dp))

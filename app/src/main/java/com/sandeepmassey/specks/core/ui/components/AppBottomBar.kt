@@ -1,4 +1,4 @@
-package com.sandeepmassey.specks.core.ui
+package com.sandeepmassey.specks.core.ui.components
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,9 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.sandeepmassey.specks.core.ui.components.AppBottomBarItem
 import com.sandeepmassey.specks.core.ui.theme.BOTTOM_BAR_ELEVATION
 import com.sandeepmassey.specks.navigation.Screen
 
@@ -22,11 +22,12 @@ import com.sandeepmassey.specks.navigation.Screen
  */
 @Composable
 fun AppBottomBar(
-    navController: NavController,
+    navController: NavHostController,
     bottomNavItems: List<Screen> = listOf(
         Screen.Recipes,
+        Screen.FavoriteRecipes,
         Screen.Profile
-    )
+    ),
 ) {
     CompositionLocalProvider(LocalElevationOverlay provides null) {
         BottomAppBar(
@@ -34,26 +35,28 @@ fun AppBottomBar(
             cutoutShape = CircleShape,
             elevation = BOTTOM_BAR_ELEVATION
         ) {
-            val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentDestination = navBackStackEntry?.destination
             BottomNavigation(
                 modifier = Modifier
                     .fillMaxSize(),
                 backgroundColor = MaterialTheme.colors.surface
             ) {
+                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentDestination = navBackStackEntry?.destination
                 bottomNavItems.forEach { item ->
                     AppBottomBarItem(
                         screen = item,
                         label = item.title.toString(),
                         contentDescription = item.title,
-                        selected = currentDestination?.route == item.route,
+                        selected = currentDestination?.hierarchy?.any {
+                            it.route == item.route
+                        } == true,
                         enabled = item.icon_outlined != null,
                         onClick = {
-                            navController.navigate(item.route) {
+                            currentDestination?.route?.let {
+                                navController.popBackStack(route = it, inclusive = true)
+                            }
+                            navController.navigate(route = item.route) {
                                 launchSingleTop = true
-                                popUpTo(Screen.Profile.route) {
-                                    saveState = true
-                                }
                                 restoreState = true
                             }
                         }

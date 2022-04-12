@@ -2,8 +2,10 @@ package com.sandeepmassey.specks.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.MenuBook
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -51,6 +53,20 @@ sealed class Screen(
     object Search : Screen(
         route = "search_screen",
         title = null,
+        icon_outlined = null,
+        icon_filled = null
+    )
+
+    object FavoriteRecipes : Screen(
+        route = "favorite_recipes_screen",
+        title = "Favorites",
+        icon_outlined = Icons.Outlined.Favorite,
+        icon_filled = Icons.Filled.Favorite
+    )
+
+    object Permissions : Screen(
+        route = "permissions_screen",
+        title = "Permissions",
         icon_outlined = null,
         icon_filled = null
     )

@@ -3,9 +3,10 @@ package com.sandeepmassey.specks.recipes.ui.recipe_details
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sandeepmassey.specks.recipes.dom.model.FavoriteRecipe
 import com.sandeepmassey.specks.recipes.dom.model.Recipe
 import com.sandeepmassey.specks.recipes.dom.use_cases.UseCases
-import com.sandeepmassey.specks.recipes.dom.util.Constants.DETAILS_ARGUMENT_KEY
+import com.sandeepmassey.specks.recipes.dom.util.RecipesConstants.DETAILS_ARGUMENT_KEY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,6 +32,12 @@ class RecipeViewModel @Inject constructor(
             _selectedRecipe.value = recipeId?.let {
                 useCases.getSelectedRecipeUseCase(recipeId = recipeId)
             }
+        }
+    }
+
+    fun addFavoriteRecipe(favoriteRecipe: FavoriteRecipe) {
+        viewModelScope.launch {
+            useCases.addFavoriteRecipeUseCase(favoriteRecipe = favoriteRecipe)
         }
     }
 }

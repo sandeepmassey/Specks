@@ -1,12 +1,10 @@
 package com.sandeepmassey.specks.core.ui.components
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +24,7 @@ fun RowScope.AppBottomBarItem(
     enabled: Boolean = true,
     selectedColor: Color = Orangish,
     unSelectedColor: Color = MaterialTheme.colors.onSurface,
+    badgeCount: Int = 0,
     onClick: () -> Unit = {}
 ) {
     BottomNavigationItem(
@@ -39,16 +38,28 @@ fun RowScope.AppBottomBarItem(
         unselectedContentColor = unSelectedColor,
         alwaysShowLabel = true,
         icon = {
-            Box(
-                modifier = Modifier.fillMaxWidth()
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                if (screen.icon_outlined != null) {
-                    Icon(
-                        imageVector = (if (selected) screen.icon_filled else screen.icon_outlined)!!,
-                        contentDescription = contentDescription,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                    )
+                BadgedBox(badge = {
+                    if (badgeCount > 0) {
+                        Text(
+                            text = badgeCount.toString(),
+                            modifier = Modifier.background(color = MaterialTheme.colors.error),
+                            color = MaterialTheme.colors.onSurface,
+                            fontSize = MaterialTheme.typography.overline.fontSize
+                        )
+                    }
+                }) {
+                    if (screen.icon_outlined != null) {
+                        Icon(
+                            imageVector = (if (selected) screen.icon_filled else screen.icon_outlined)!!,
+                            contentDescription = contentDescription,
+                            modifier = Modifier
+                                .align(Alignment.Center)
+                        )
+                    }
                 }
             }
         }
