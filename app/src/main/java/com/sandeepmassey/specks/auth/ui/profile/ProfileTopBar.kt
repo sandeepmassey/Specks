@@ -54,7 +54,7 @@ fun DeleteAllAction(onDelete: () -> Unit) {
 
     IconButton(onClick = { expanded = true }) {
         Icon(
-            Icons.Default.Menu,
+            imageVector = Icons.Default.Menu,
             contentDescription = stringResource(id = R.string.vertical_menu_text),
             tint = MaterialTheme.colors.onSurface
         )

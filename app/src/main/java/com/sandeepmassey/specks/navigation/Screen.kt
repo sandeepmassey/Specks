@@ -2,9 +2,11 @@ package com.sandeepmassey.specks.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Camera
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Camera
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.MenuBook
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -64,9 +66,16 @@ sealed class Screen(
         icon_filled = Icons.Filled.Favorite
     )
 
-    object Permissions : Screen(
-        route = "permissions_screen",
-        title = "Permissions",
+    object Camera : Screen(
+        route = "camera_screen",
+        title = "Camera",
+        icon_outlined = Icons.Outlined.Camera,
+        icon_filled = Icons.Filled.Camera
+    )
+
+    object Gallery : Screen(
+        route = "gallery_screen",
+        title = "Gallery",
         icon_outlined = null,
         icon_filled = null
     )

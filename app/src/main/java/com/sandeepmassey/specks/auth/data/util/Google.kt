@@ -1,7 +1,6 @@
 package com.sandeepmassey.specks.auth.data.util
 
 import android.app.Activity
-import android.util.Log
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
@@ -15,6 +14,7 @@ import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.sandeepmassey.specks.auth.data.util.Constants.CLIENT_ID
+import timber.log.Timber
 
 /**
  * Created by Sandeep Massey on 18-03-2022
@@ -39,21 +39,21 @@ fun StartActivityForResult(
                     onResultReceived(token)
                 }
             } else {
-                Log.d("StartActivityForResult", "BLACK SCRIM CLICKED, DIALOG CLOSED.")
+                Timber.d("BLACK SCRIM CLICKED, DIALOG CLOSED.")
                 onDialogDismissed()
             }
         } catch (e: ApiException) {
             when (e.statusCode) {
                 CommonStatusCodes.CANCELED -> {
-                    Log.d("StartActivityForResult", "ONE-TAP DIALOG CANCELED.")
+                    Timber.d("ONE-TAP DIALOG CANCELED.")
                     onDialogDismissed()
                 }
                 CommonStatusCodes.NETWORK_ERROR -> {
-                    Log.d("StartActivityForResult", "ONE-TAP NETWORK ERROR.")
+                    Timber.d("ONE-TAP NETWORK ERROR.")
                     onDialogDismissed()
                 }
                 else -> {
-                    Log.d("StartActivityForResult", "${e.message}")
+                    Timber.d(e.message)
                     onDialogDismissed()
                 }
             }
@@ -91,11 +91,11 @@ fun signIn(
                     ).build()
                 )
             } catch (e: Exception) {
-                Log.d("SignIn", "Couldn't start One Tap UI: ${e.message}")
+                Timber.d("Couldn't start One Tap UI: " + e.message)
             }
         }
         .addOnFailureListener {
-            Log.d("SignIn", "Signing Up...")
+            Timber.d("Signing Up...")
             signUp(
                 activity = activity,
                 launchActivityResult = launchActivityResult,
@@ -129,11 +129,11 @@ fun signUp(
                     ).build()
                 )
             } catch (e: Exception) {
-                Log.d("SignUp", "Couldn't start One Tap UI: ${e.message}")
+                Timber.d("Couldn't start One Tap UI: " + e.message)
             }
         }
         .addOnFailureListener {
-            Log.d("SignUp", "${it.message}")
+            Timber.d(it.message)
             accountNotFound()
         }
 }

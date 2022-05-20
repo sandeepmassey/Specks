@@ -1,7 +1,6 @@
 package com.sandeepmassey.specks.recipes.worker
 
 import android.content.Context
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
@@ -12,6 +11,7 @@ import com.sandeepmassey.specks.core.util.Constants.CLEAN_CACHE_CHANNEL
 import com.sandeepmassey.specks.recipes.dom.use_cases.UseCases
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import timber.log.Timber
 import kotlin.random.Random
 
 /**
@@ -30,7 +30,7 @@ class LocalCacheCleaner @AssistedInject constructor(
             useCases.removeAllRecipesUseCase()
             Result.success()
         } catch (e: Exception) {
-            Log.d("Worker", e.message.toString())
+            Timber.d(e.message.toString())
             Result.failure()
         }
     }
@@ -42,7 +42,7 @@ class LocalCacheCleaner @AssistedInject constructor(
                 NotificationCompat.Builder(context, CLEAN_CACHE_CHANNEL)
                     .setSmallIcon(R.drawable.ic_launcher_foreground)
                     .setContentText("Cleaning...")
-                    .setContentTitle("Cleaning cache...")
+                    .setContentTitle(R.string.app_name.toString())
                     .build()
             )
         )

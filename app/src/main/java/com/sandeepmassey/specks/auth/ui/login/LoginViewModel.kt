@@ -1,6 +1,5 @@
 package com.sandeepmassey.specks.auth.ui.login
 
-import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -56,7 +55,6 @@ class LoginViewModel @Inject constructor(
     }
 
     fun verifyTokenOnBackend(request: AuthApiRequest) {
-        Log.d("LoginViewModel", request.token)
         _apiResponse.value = RequestState.Loading
         try {
             viewModelScope.launch(Dispatchers.IO) {

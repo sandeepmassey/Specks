@@ -1,5 +1,6 @@
 package com.sandeepmassey.specks.core.util
 
+import android.os.Build
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
@@ -39,3 +40,9 @@ fun <T : R, R> Flow<T>.collectAsStateLifecycleAware(
         context = context
     )
 }
+
+inline fun <T> sdk29AndUp(onSdk29: () -> T): T? =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) onSdk29() else null
+
+inline fun <T> sdk30AndUp(onSdk30: () -> T): T? =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) onSdk30() else null

@@ -2,7 +2,6 @@ package com.sandeepmassey.specks.auth.ui.login
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -32,7 +31,6 @@ fun LoginScreen(
     val apiResponse by loginViewModel.apiResponse
 
     Scaffold(
-        backgroundColor = MaterialTheme.colors.background,
         content = {
             LoginContent(
                 signedInState = signedInState,

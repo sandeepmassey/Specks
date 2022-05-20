@@ -26,6 +26,8 @@ fun AppBottomBar(
     bottomNavItems: List<Screen> = listOf(
         Screen.Recipes,
         Screen.FavoriteRecipes,
+        Screen.Camera,
+//        Screen.Gallery,
         Screen.Profile
     ),
 ) {

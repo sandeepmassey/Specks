@@ -11,6 +11,7 @@ import com.sandeepmassey.specks.auth.data.repo.DataStoreOperationsImpl
 import com.sandeepmassey.specks.auth.dom.repo.AuthRepository
 import com.sandeepmassey.specks.auth.dom.repo.DataStoreOperations
 import com.sandeepmassey.specks.core.util.Constants.PREFERENCES_NAME
+import com.sandeepmassey.specks.imaging.dom.use_cases.DetectTrash
 import com.sandeepmassey.specks.recipes.data.repo.RecipesRepository
 import com.sandeepmassey.specks.recipes.dom.use_cases.*
 import dagger.Module
@@ -59,7 +60,7 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideUseCases(repository: RecipesRepository): UseCases {
+    fun provideRecipesUseCases(repository: RecipesRepository): UseCases {
         return UseCases(
             getAllRecipesUseCase = GetAllRecipesUseCase(repository),
             getSelectedRecipeUseCase = GetSelectedRecipeUseCase(repository),
@@ -68,6 +69,14 @@ object RepositoryModule {
             getAllFavoriteRecipesUseCase = GetAllFavoriteRecipesUseCase(repository),
             addFavoriteRecipeUseCase = AddFavoriteRecipeUseCase(repository),
             removeFavoriteRecipeUseCase = RemoveFavoriteRecipeUseCase(repository)
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideImagingUseCases(): com.sandeepmassey.specks.imaging.dom.use_cases.UseCases {
+        return com.sandeepmassey.specks.imaging.dom.use_cases.UseCases(
+            getTrashDetectorUseCase = DetectTrash()
         )
     }
 }

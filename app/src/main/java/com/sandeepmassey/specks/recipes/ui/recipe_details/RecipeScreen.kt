@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.sandeepmassey.specks.navigation.Screen
 
 /**
  * Created by Sandeep Massey on 23-03-2022
@@ -30,6 +31,7 @@ fun RecipeScreen(
                     selectedRecipe?.let { recipe ->
                         recipeViewModel.addFavoriteRecipe(favoriteRecipe = recipe.toFavoriteRecipe())
                     }
+                    navigateToFavoriteRecipesScreen(navController = navController)
                 },
                 onCloseClicked = {
                     navController.popBackStack()
@@ -42,4 +44,11 @@ fun RecipeScreen(
             )
         }
     )
+}
+
+private fun navigateToFavoriteRecipesScreen(
+    navController: NavHostController
+) {
+    navController.popBackStack(route = Screen.Recipe.route, inclusive = true)
+    navController.navigate(route = Screen.FavoriteRecipes.route)
 }

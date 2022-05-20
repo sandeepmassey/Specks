@@ -8,6 +8,7 @@ import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import com.sandeepmassey.specks.core.util.Constants.CLEAN_CACHE_CHANNEL
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -21,6 +22,11 @@ class App : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
+        // Timber logging
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+        // Notification channel
         val notificationChannel = NotificationChannel(
             CLEAN_CACHE_CHANNEL,
             "Clean cache",

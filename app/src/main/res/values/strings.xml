@@ -26,5 +26,20 @@
     <string name="google_logo">Google Logo</string>
     <string name="message_bar_icon">MessageBar Icon</string>
     <string name="delete_icon">Delete icon</string>
-
+    <string name="swipe_icon">Swipe icon</string>
+    <string name="take_picture">Take picture</string>
+    <string name="camera_text">Camera</string>
+    <string name="permission_rationale_camera_text">The camera is important for this app. Please grant the permission</string>
+    <string name="permission_warning_camera_text">Camera permission required for this feature to be available. Please grant the permission</string>
+    <string name="request_permission_button">Request permission</string>
+    <string name="favorites_text">Favorites</string>
+    <string name="gallery_photo_text">Gallery photo</string>
+    <string name="switch_camera_text">Switch camera</string>
+    <string name="click_camera_text">Click camera</string>
+    <string name="view_gallery_text">View gallery</string>
+    <string name="captured_image_text">Captured image</string>
+    <string name="delete_image_text">Delete image</string>
+    <string name="share_image_text">Share image</string>
+    <string name="back_to_camera_text">Back</string>
+    <string name="gallery_text">Gallery</string>
 </resources>

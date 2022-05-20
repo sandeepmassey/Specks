@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import com.sandeepmassey.specks.core.ui.theme.Orangish
 import com.sandeepmassey.specks.navigation.Screen
 
@@ -32,7 +33,11 @@ fun RowScope.AppBottomBarItem(
         enabled = enabled,
         onClick = onClick,
         label = {
-            Text(text = label)
+            Text(
+                text = label,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
         },
         selectedContentColor = selectedColor,
         unselectedContentColor = unSelectedColor,

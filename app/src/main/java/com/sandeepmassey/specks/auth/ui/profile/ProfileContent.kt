@@ -1,6 +1,5 @@
 package com.sandeepmassey.specks.auth.ui.profile
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.LinearProgressIndicator
@@ -10,11 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
-import coil.compose.rememberImagePainter
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.sandeepmassey.specks.R
 import com.sandeepmassey.specks.auth.dom.model.AuthApiResponse
 import com.sandeepmassey.specks.auth.dom.model.MessageBarState
@@ -57,17 +60,18 @@ fun ProfileContent(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val painter = rememberImagePainter(data = profilePhoto) {
-                crossfade(500)
-                placeholder(R.drawable.ic_placeholder)
-            }
-            Image(
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(profilePhoto)
+                    .crossfade(false)
+                    .build(),
+                placeholder = painterResource(id = R.drawable.ic_placeholder),
+                contentDescription = stringResource(id = R.string.profile_photo_text),
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .padding(bottom = 40.dp)
                     .size(150.dp)
-                    .clip(CircleShape),
-                painter = painter,
-                contentDescription = stringResource(id = R.string.profile_photo_text)
+                    .clip(CircleShape)
             )
             Text(
                 text = stringResource(id = R.string.welcome_text),

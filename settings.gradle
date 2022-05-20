@@ -14,5 +14,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "Specks"
 include ':app'
+include ':opencv'

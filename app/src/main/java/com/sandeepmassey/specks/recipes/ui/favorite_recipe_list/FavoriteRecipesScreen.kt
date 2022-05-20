@@ -11,7 +11,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.sandeepmassey.specks.core.ui.components.AppBottomBar
 import com.sandeepmassey.specks.core.util.collectAsStateLifecycleAware
-import com.sandeepmassey.specks.navigation.Screen
 
 /**
  * Created by Sandeep Massey on 03-04-2022
@@ -27,11 +26,7 @@ fun FavoriteRecipesScreen(
 
     Scaffold(
         topBar = {
-            FavoriteRecipesTopBar(
-                onSearchClicked = {
-                    navController.navigate(Screen.Search.route)
-                }
-            )
+            FavoriteRecipesTopBar()
         },
         bottomBar = {
             AppBottomBar(
@@ -42,7 +37,10 @@ fun FavoriteRecipesScreen(
         Column(modifier = Modifier.padding(padding)) {
             FavoriteRecipesListContent(
                 recipes = allFavoriteRecipes,
-                navController = navController
+                navController = navController,
+                onSwipe = {
+                    favoriteRecipesViewModel.removeFavoriteRecipe(it)
+                }
             )
         }
     }

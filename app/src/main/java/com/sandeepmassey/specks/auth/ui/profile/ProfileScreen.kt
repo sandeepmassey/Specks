@@ -2,7 +2,6 @@ package com.sandeepmassey.specks.auth.ui.profile
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -40,7 +39,6 @@ fun ProfileScreen(
     val lastName by profileViewModel.lastName
 
     Scaffold(
-        backgroundColor = MaterialTheme.colors.background,
         topBar = {
             ProfileTopBar(
                 onDeleteAllConfirmed = {
